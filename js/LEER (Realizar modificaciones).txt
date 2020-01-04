@@ -1,0 +1,4 @@
+Utilizar addEventListener para que con los eventos ya tengamos
+automaticamente los resultados calculados sin necesidad de
+tener que hacer click en algun boton.
+solo se mantendra el boton para pagar
