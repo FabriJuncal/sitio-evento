@@ -1,7 +1,7 @@
 <?php include_once 'includes/templates/header.php';?>
   <section class="seccion contenedor">
     <h2>Registro de Usuarios</h2>
-    <form id="registro" class="registro" action="validar_registro.php" method="POST">
+    <form id="registro" class="registro" action="pagar.php" method="POST">
       <div id="datos_usuario" class="registro caja clearfix">
 
         <div class="campo">
@@ -41,7 +41,8 @@
               <div class="orden">
                 <label for="pase_dia">Boletos deseados:</label>
                 <!-- Agregamos el "boletos[]" con corchetes al final en el atributo "name" y asi estos 3 Inputs se almacenarán dentro de un array numerico -->
-                <input type="number" min="0" id="pase_dia" class="registro-number" size="3" name="boletos[]" placeholder="0">
+                <input type="number" min="0" id="pase_dia" class="registro-number" size="3" name="boletos[pase_dia][cantidad]" placeholder="0">
+                <input type="hidden" value="30" name="boletos[pase_dia][precio]">
               </div>
             </div>
           </li>
@@ -58,7 +59,8 @@
               <div class="orden">
                 <label for="pase_completo">Boletos deseados:</label>
                 <!-- Agregamos el "boletos[]" con corchetes al final en el atributo "name" y asi estos 3 Inputs se almacenarán dentro de un array numerico -->
-                <input type="number" min="0" id="pase_completo" class="registro-number" size="3" name="boletos[]" placeholder="0">
+                <input type="number" min="0" id="pase_completo" class="registro-number" size="3" name="boletos[pase_completo][cantidad]" placeholder="0">
+                <input type="hidden" value="50" name="boletos[pase_completo][precio]">
               </div>
             </div>
           </li>
@@ -75,7 +77,8 @@
               <div class="orden">
                 <label for="pase_dosdias">Boletos deseados:</label>
                 <!-- Agregamos el "boletos[]" con corchetes al final en el atributo "name" y asi estos 3 Inputs se almacenarán dentro de un array numerico -->
-                <input type="number" min="0" id="pase_dosdias" class="registro-number" size="3" name="boletos[]" placeholder="0">
+                <input type="number" min="0" id="pase_dosdias" class="registro-number" size="3" name="boletos[pase_dosdias][cantidad]" placeholder="0">
+                <input type="hidden" value="45" name="boletos[pase_dosdias][precio]">
               </div>
             </div>
           </li>
@@ -163,12 +166,14 @@
 
              <div class="orden">
                <label for="camisa_evento">Camisa del evento $10 <small>(Promocion 7% dto.)</small></label>
-               <input type="number" name="pedido_camisas" min="0" id="camisa_evento" class="registro-number" size="3" placeholder="0">
+               <input type="number" name="pedido_extra[camisas][cantidad]" min="0" id="camisa_evento" class="registro-number" size="3" placeholder="0">
+               <input type="hidden" value="10" name=pedido_extra[camisas][precio]>
              </div><!--.orden-->
 
              <div class="orden">
               <label for="etiquetas">Paquete de 10 etiquetas $2<small>(HTML5, CSS3, JavaScript, Chrome)</small></label>
-              <input type="number" name="pedido_etiquetas" min="0" id="etiquetas" class="registro-number" size="3" placeholder="0">
+              <input type="number" name="pedido_extra[etiquetas][cantidad]" min="0" id="etiquetas" class="registro-number" size="3" placeholder="0">
+              <input type="hidden" value="2" name=pedido_extra[etiquetas][precio]>
             </div><!--.orden-->
 
             <div class="orden">

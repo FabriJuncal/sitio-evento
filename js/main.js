@@ -297,8 +297,9 @@ $(function(){
 
     /** FORMULARIO DE SUSCRIPCION EN UNA VENTANA MODAL EN SECCION **/    
     // PLUGIN - Colorbox(Ventana Modal) y Mailchimp(formulario)
-    $('.boton_newslleter').colorbox({inline:true, width:'50%'});
-
+    if(document.querySelector('.boton_newslleter')){
+        $('.boton_newslleter').colorbox({inline:true, width:'50%'});
+    }
     /** MENU FIJO **/
     // Hacemos que el menu al hacer scroll quede fijo a la pantalla
         
