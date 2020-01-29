@@ -1358,6 +1358,23 @@ div.cboxElement{
     font-size: 1.5em;
 }
 
+ .resultado{
+    text-align: center;
+    padding: 1rem;
+    color: white;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+.correcto{
+    background-color: rgb(2,173,2);
+}
+
+.error{
+    background-color: red;
+}
+
 /* ==========================================================================
    Helper classes
    ========================================================================== */

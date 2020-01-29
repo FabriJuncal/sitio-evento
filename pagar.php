@@ -4,7 +4,7 @@ if(!isset($_POST['submit'])){
     exit("Hubo un error");
 }
 
-// Utilizamos el Metodo "namespace" para importar las clases
+// Utilizamos el Metodo "Name Space" para importar las clases
 use PayPal\Api\Payer;
 use PayPal\Api\Item;
 use PayPal\Api\ItemList;
@@ -151,8 +151,8 @@ $transaccion->setAmount($cantidad) //setAmount(): Cantidad recaudada
 
 // CONJUNTO DE URL DE REDIRECCIONAMIENTO QUE PROPORCIONA SOLO PARA PAGOS BASADOS EN PAYPAL.
 $redireccionar = new RedirectUrls();
-$redireccionar->setReturnUrl(URL_SITIO."pago_finalizado.php?exito=true&id_pago={$ID_registro}")//setReturnUrl(): URL a la que se redirigiría al pagador después de aprobar el pago.
-              ->setCancelUrl(URL_SITIO."pago_finalizado.php?exito=false&id_pago={$ID_registro}");//setCancelUrl(): URL a la que se redirigiría al pagador después de cancelar el pago
+$redireccionar->setReturnUrl(URL_SITIO."pago_finalizado.php?id_pago={$ID_registro}")//setReturnUrl(): URL a la que se redirigiría al pagador después de aprobar el pago.
+              ->setCancelUrl(URL_SITIO."pago_finalizado.php?id_pago={$ID_registro}");//setCancelUrl(): URL a la que se redirigiría al pagador después de cancelar el pago
 
 $pago = new Payment();
 $pago->setIntent("sale")//setIntent(): Intento de pago ->  Valores válidos: ["sale", "authorize", "order"]
