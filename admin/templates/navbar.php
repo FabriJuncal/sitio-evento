@@ -15,7 +15,7 @@
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="fas fa-users mr-2"></i> Admin
+              <i class="fas fa-user mr-2"></i> Admin
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               
