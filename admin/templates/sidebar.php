@@ -154,7 +154,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="crear-admin.php" class="nav-link">
                   <i class="fas fa-plus-circle nav-icon"></i>
                   <p>Agregar</p>
                 </a>
