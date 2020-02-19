@@ -1,0 +1,11 @@
+.login-page .main-footer{
+    display: none;
+}
+
+.img-login{
+    max-width: 257.922px;
+}
+
+.login-card-body{
+    border-radius: 3%;
+}

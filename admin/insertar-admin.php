@@ -48,3 +48,45 @@ if(isset($_POST['agregar-admin'])){
 
     die(json_encode($respuesta));
 }
+
+if(isset($_POST['login-admin'])){
+    $usuario = $_POST['usuario'];
+    $password = $_POST['password'];
+
+    try{
+        include_once "funciones/funciones.php";
+        $stmt = $conn->prepare("SELECT * FROM admins WHERE usuario = ?");
+        $stmt->bind_param("s", $usuario);
+        $stmt->execute();
+        $stmt->bind_result($id_admin, $usuario_admin, $nombre_admin, $password_admin);
+        if($stmt->affected_rows){
+            $existe = $stmt->fetch();
+            if($existe){
+                //password_verify(): Funcion que realiza la conversion de la contraseña y compara con la contraseña encriptada
+                // 1er parametro($password): Contraseña desencriptada que incresa el usuario.
+                // 2do parametreo($password_admin): Contraseña encriptada que se encuentra almacenada en la base de datos
+                if(password_verify($password, $password_admin)){
+                    $respuesta = array(
+                        'respuesta' => 'exito',
+                        'nombre' => $nombre_admin
+                    );
+                }else{
+                    // No coincide la Contraseña
+                    $respuesta = array(
+                        'respuesta' => 'error'
+                    );
+                }
+            }else{
+                // No se encuentra el Usuario
+                $respuesta = array(
+                    'respuesta' => 'error'
+                );
+            }
+        }
+
+    }catch(Exception $e){
+        echo "Error: " . $e->getMessage();
+    }
+
+    die(json_encode($respuesta));
+}
