@@ -61,7 +61,8 @@ include_once 'templates/sidebar.php';
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
-                        <button type="submit" class="btn btn-info" name="agregar-admin">Añadir</button>
+                        <input type="hidden" name="agregar-admin">
+                        <button type="submit" class="btn btn-info">Añadir</button>
                       </div>
                       <!-- /.card-footer -->
                     </form>
