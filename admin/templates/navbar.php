@@ -24,7 +24,7 @@
                 <i class="fas fa-cogs mr-2"></i></i> Configuración
               </a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
+              <a href="login.php?cerrar_sesion=true" class="dropdown-item">
                 <i class="fas fa-sign-out-alt mr-2"></i> Salir
               </a>
               

@@ -42,13 +42,16 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data){
                 var resultado = data;
-                console.log(resultado);
                 if(resultado.respuesta === 'exito'){
                     Swal.fire(
                         'Login Correcto',
                         '¡Bienvenid@ '+resultado.nombre+'!',
                         'success'
                     )
+
+                    setTimeout(function(){
+                        window.location.href = 'admin-area.php';
+                    }, 2000);
                 }else{
                     Swal.fire(
                         '¡ERROR!',

@@ -1,4 +1,6 @@
 <?php
+// Para que funcione la redirección, no debe haber nada antes
+include_once 'funciones/sesiones.php';
 include_once 'templates/header.php';
 include_once 'templates/navbar.php';
 include_once 'templates/sidebar.php';

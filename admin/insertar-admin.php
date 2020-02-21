@@ -66,6 +66,12 @@ if(isset($_POST['login-admin'])){
                 // 1er parametro($password): Contraseña desencriptada que incresa el usuario.
                 // 2do parametreo($password_admin): Contraseña encriptada que se encuentra almacenada en la base de datos
                 if(password_verify($password, $password_admin)){
+                    // Iniciamos la Sesion cuando el Login es correcto
+                    session_start();
+                    // Cargamos los datos en la variable "$_SESSION" y esta se almacena en el servidor
+                    $_SESSION['usuario'] = $usuario_admin;
+                    $_SESSION['nombre'] = $nombre_admin;
+
                     $respuesta = array(
                         'respuesta' => 'exito',
                         'nombre' => $nombre_admin
@@ -83,7 +89,8 @@ if(isset($_POST['login-admin'])){
                 );
             }
         }
-
+        $stmt->close();
+        $conn->close();
     }catch(Exception $e){
         echo "Error: " . $e->getMessage();
     }
