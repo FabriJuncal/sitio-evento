@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="css/adminlte.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
   <!-- Sweet Alert 2 -->
   <link rel="stylesheet" href="css/sweetalert2.min.css">
   <!-- CSS Personalizado -->

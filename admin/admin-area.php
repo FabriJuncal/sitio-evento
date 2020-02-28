@@ -6,9 +6,6 @@ include_once 'templates/navbar.php';
 include_once 'templates/sidebar.php';
 ?>
 
-
-
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
