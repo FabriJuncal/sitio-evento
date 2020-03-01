@@ -2,9 +2,22 @@
 // Para que funcione la redirección, no debe haber nada antes
 include_once 'funciones/sesiones.php';
 include_once 'funciones/funciones.php';
+
+
+$id = $_GET['id'];
+// Validamos que el valor que pasamos por GET sea un Numero
+if(!filter_var($id, FILTER_VALIDATE_INT)){
+  die('¡ERROR!');
+} 
+
 include_once 'templates/header.php';
 include_once 'templates/navbar.php';
 include_once 'templates/sidebar.php';
+
+// Obtenemos los datos del administrador por el ID que pasamos por GET
+$sql = "SELECT * FROM admins WHERE id_admin = $id";
+$resultado = $conn->query($sql);
+$admin = $resultado->fetch_assoc();
 ?>
 
   <!-- Content Wrapper. Contains page content -->
@@ -42,13 +55,13 @@ include_once 'templates/sidebar.php';
                         <div class="form-group row">
                           <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
+                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" value="<?=$admin['usuario']?>">
                           </div>
                         </div>
                         <div class="form-group row">
                             <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo">
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo" value="<?=$admin['nombre']?>">
                             </div>
                         </div>
                         <div class="form-group row">
