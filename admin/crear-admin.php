@@ -37,7 +37,7 @@ include_once 'templates/sidebar.php';
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form class="form-horizontal" name="crear-admin" id="crear-admin" method="post" action="modelo-admin.php">
+                    <form class="form-horizontal" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
                       <div class="card-body">
                         <div class="form-group row">
                           <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
@@ -60,8 +60,8 @@ include_once 'templates/sidebar.php';
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
-                        <input type="hidden" name="agregar-admin">
-                        <button type="submit" class="btn btn-info">Añadir</button>
+                        <input type="hidden" name="registro" value="crear">
+                        <button type="submit" class="btn btn-info">Guardar</button>
                       </div>
                       <!-- /.card-footer -->
                     </form>

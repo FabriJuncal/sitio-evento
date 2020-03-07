@@ -27,8 +27,8 @@ $admin = $resultado->fetch_assoc();
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Crear Administrador</h1>
-            <span>Llena el formulario para crear un administrador</span>
+            <h1>Editar Administrador</h1>
+            <span>Llena el formulario para editar un administrador</span>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -46,11 +46,11 @@ $admin = $resultado->fetch_assoc();
               <div class="card-body">
                             <div class="card card-info">
                     <div class="card-header">
-                      <h3 class="card-title">Crear Administrador</h3>
+                      <h3 class="card-title">Editar Administrador</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form class="form-horizontal" name="crear-admin" id="crear-admin" method="post" action="modelo-admin.php">
+                    <form class="form-horizontal" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
                       <div class="card-body">
                         <div class="form-group row">
                           <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
@@ -73,7 +73,8 @@ $admin = $resultado->fetch_assoc();
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
-                        <input type="hidden" name="agregar-admin">
+                        <input type="hidden" name="registro" value="editar">
+                        <input type="hidden" name="ID_registro" value="<?=$id?>">
                         <button type="submit" class="btn btn-info">Añadir</button>
                       </div>
                       <!-- /.card-footer -->

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('#crear-admin').on('submit', function(e){
+    $('#guardar-registro').on('submit', function(e){
         e.preventDefault();
         
         var  datos = $(this).serializeArray();
@@ -10,25 +10,28 @@ $(document).ready(function(){
             url: $(this).attr('action'),
             dataType: 'json',
             success: function(data){
-                var resultado = data;
+                    var resultado = data;
+                    if(resultado.respuesta === 'exito'){
+                        // Variable Dinamica
+                        accion = (resultado.accion == 'crear' ? 'creó' :
+                                 (resultado.accion == 'editar' ? 'actualizó' :
+                                 (resultado.accion == 'eliminar' ? 'eliminó' : 'error')));
 
-                if(resultado.respuesta === 'exito'){
-                    Swal.fire(
-                        '¡CORRECTO!',
-                        'El administrador se creo correctamente',
-                        'success'
-                    )
-                }else{
-                    Swal.fire(
-                        '¡ERROR!',
-                        'Algo salio mal',
-                        'error'      
-                    )
-                }
-            }
-        })
-    });
-
+                        Swal.fire(
+                            '¡CORRECTO!',
+                            'El administrador se ' + accion + ' correctamente',
+                            'success'
+                        );
+                    }else{
+                        Swal.fire(
+                            '¡ERROR!',
+                            'Algo salio mal',
+                            'error'      
+                        );
+                    }
+                }               
+            });
+        });   
 
     $('#login-admin').on('submit', function(e){
         e.preventDefault();

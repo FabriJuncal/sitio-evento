@@ -19,7 +19,7 @@ include_once 'templates/header.php';
     <div class="card">
       <div class="card-body login-card-body">
         <p class="login-box-msg">Inicia sesión aquí</p>
-        <form name="login-admin-form" id="login-admin" method="post" action="insertar-admin.php">
+        <form name="login-admin-form" id="login-admin" method="post" action="modelo-admin.php">
           <div class="input-group mb-3">
             <input type="text" name="usuario" class="form-control" placeholder="Usuario">
             <div class="input-group-append">
