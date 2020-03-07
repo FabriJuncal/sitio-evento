@@ -22,4 +22,63 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
         processing: "Procesando..."
       }
     });
+
+    $('#repetir_password').on('input', function(){
+      var password_nuevo = $('#password').val();
+
+      // if($(this).val() == password_nuevo){
+      //   $('#resultado_password').text('Correcto');
+      //   $('#resultado_password').parents('.form-group').addClass('has-success').removeClass('has-error');
+      //   $('input#password').parents('.form-group').addClass('has-success').removeClass('has-error');
+      // }else{
+      //   $('#resultado_password').text('¡No son iguales!');
+      //   $('#resultado_password').parents('.form-group').addClass('has-error').removeClass('has-success');
+      //   $('input#password').parents('.form-group').addClass('has-error').removeClass('has-success');
+      // }
+
+      // Ejemplo de JavaScript de inicio para deshabilitar los envíos de formularios si hay campos no válidos
+      window.addEventListener('load', function() {
+        // Obtenga todos los formularios a los que queremos aplicar estilos personalizados de validación Bootstrap
+        var forms = $('needs-validation');
+        // Bucle sobre ellos y evitar la presentación
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+
+    });
+        // var forms = $('needs-validation');
+        // $('#btn-enviar').submit(function(event){
+        //   if (form.checkValidity() === false) {
+        //     event.preventDefault();
+        //     event.stopPropagation();
+        //   }
+        //   $('#guardar-registro').addClass('was-validated')
+        // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   });

@@ -37,31 +37,45 @@ include_once 'templates/sidebar.php';
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form class="form-horizontal" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
+                    <form class="form-horizontal needs-validation" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php" >
                       <div class="card-body">
-                        <div class="form-group row">
-                          <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario">
-                          </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
-                            <div class="col-sm-10">
-                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo">
+                           <div class="form-group row">
+                              <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
+                              <div class="col-sm-10">
+                                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required>
+                                <div class="valid-feedback">
+                                  Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                  Please select a valid state.
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                          <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
-                          <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
-                          </div>
+                            <div class="form-group row">
+                                <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                                <div class="col-sm-10">
+                                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+                              <div class="col-sm-10">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                              <label for="repetir_password" class="col-sm-2 col-form-label">Repetir Contraseña</label>
+                              <div class="col-sm-10">
+                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Repetir Contraseña" required>
+                                <span id="resultado_password" class="valid-feedback"></span>
+                              </div>
+                            </div>
                         </div>
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
                         <input type="hidden" name="registro" value="crear">
-                        <button type="submit" class="btn btn-info">Guardar</button>
+                        <button type="submit" id="btn-enviar" class="btn btn-info">Enviar</button>
                       </div>
                       <!-- /.card-footer -->
                     </form>
