@@ -87,6 +87,32 @@ if(isset($_POST['registro'])){
 
         die(json_encode($respuesta));
     }
+    // ELiminar el Usuario
+    if($_POST['registro'] == 'eliminar'){
+
+        // try{
+        //     $stmt = $conn->prepare("DELETE FROM admins WHERE id_admin = ?");
+        //     $stmt->bind_param("i", $id_registro);
+        //     $stmt->execute();
+        //     if($stmt->affected_rows > 0){
+        //         $respuesta = array(
+        //             'respuesta' => 'exito',
+        //             'ID_eliminado' => $id_registro,
+        //             'accion' => $_POST['registro']
+        //         );
+        //     }else{
+        //         $respuesta = array(
+        //             'respuesta' => 'error'
+        //         );
+        //     }
+        // }catch(Exception $e){
+        //     $respuesta = array(
+        //         'respuesta' => $e->getMessage()
+        //     );
+        // }
+
+        die(json_encode($id_registro));
+    }
 }
 // Logea al Usuario
 if(isset($_POST['login-admin'])){

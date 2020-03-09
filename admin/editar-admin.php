@@ -50,18 +50,18 @@ $admin = $resultado->fetch_assoc();
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form class="form-horizontal" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
+                    <form class="form-horizontal needs-validation" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php">
                       <div class="card-body">
                         <div class="form-group row">
                           <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" value="<?=$admin['usuario']?>">
+                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" value="<?=$admin['usuario']?>" autocomplete="off" required>
                           </div>
                         </div>
                         <div class="form-group row">
                             <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo" value="<?=$admin['nombre']?>">
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo" value="<?=$admin['nombre']?>" autocomplete="off" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -70,12 +70,19 @@ $admin = $resultado->fetch_assoc();
                             <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña">
                           </div>
                         </div>
+                        <div class="form-group row">
+                              <label for="repetir_password" class="col-sm-2 col-form-label">Repetir Contraseña</label>
+                              <div class="col-sm-10">
+                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Repetir Contraseña" >
+                                <span id="resultado_password"></span>
+                              </div>
+                            </div>
                       </div>
                       <!-- /.card-body -->
                       <div class="card-footer">
                         <input type="hidden" name="registro" value="editar">
                         <input type="hidden" name="ID_registro" value="<?=$id?>">
-                        <button type="submit" class="btn btn-info">Añadir</button>
+                        <button type="submit" id="btn-enviar" class="btn btn-info">Añadir</button>
                       </div>
                       <!-- /.card-footer -->
                     </form>

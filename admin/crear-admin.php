@@ -43,12 +43,6 @@ include_once 'templates/sidebar.php';
                               <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
                               <div class="col-sm-10">
                                 <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required>
-                                <div class="valid-feedback">
-                                  Looks good!
-                                </div>
-                                <div class="invalid-feedback">
-                                  Please select a valid state.
-                                </div>
                               </div>
                             </div>
                             <div class="form-group row">
@@ -60,14 +54,14 @@ include_once 'templates/sidebar.php';
                             <div class="form-group row">
                               <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
                               <div class="col-sm-10">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" >
                               </div>
                             </div>
                             <div class="form-group row">
                               <label for="repetir_password" class="col-sm-2 col-form-label">Repetir Contraseña</label>
                               <div class="col-sm-10">
-                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Repetir Contraseña" required>
-                                <span id="resultado_password" class="valid-feedback"></span>
+                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Repetir Contraseña" >
+                                <span id="resultado_password"></span>
                               </div>
                             </div>
                         </div>

@@ -23,62 +23,65 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
       }
     });
 
-    $('#repetir_password').on('input', function(){
-      var password_nuevo = $('#password').val();
+    $('#btn-enviar').attr('disabled', true);
 
-      // if($(this).val() == password_nuevo){
-      //   $('#resultado_password').text('Correcto');
-      //   $('#resultado_password').parents('.form-group').addClass('has-success').removeClass('has-error');
-      //   $('input#password').parents('.form-group').addClass('has-success').removeClass('has-error');
-      // }else{
-      //   $('#resultado_password').text('¡No son iguales!');
-      //   $('#resultado_password').parents('.form-group').addClass('has-error').removeClass('has-success');
-      //   $('input#password').parents('.form-group').addClass('has-error').removeClass('has-success');
-      // }
-
-      // Ejemplo de JavaScript de inicio para deshabilitar los envíos de formularios si hay campos no válidos
-      window.addEventListener('load', function() {
-        // Obtenga todos los formularios a los que queremos aplicar estilos personalizados de validación Bootstrap
-        var forms = $('needs-validation');
-        // Bucle sobre ellos y evitar la presentación
-        var validation = Array.prototype.filter.call(forms, function(form) {
-          form.addEventListener('submit', function(event) {
-            if (form.checkValidity() === false) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-            form.classList.add('was-validated');
-          }, false);
-        });
-      }, false);
-
+    $('input#password').on('input', function(){
+      let password_nuevo = $('#repetir_password').val();
+      if(password_nuevo != ''){   
+        if($(this).val() == password_nuevo){
+          $('#resultado_password').text('Correcto');
+          $('#resultado_password').addClass('valid-feedback').removeClass('invalid-feedback');
+          $('input#password').addClass('is-valid').removeClass('is-invalid');
+          $('#repetir_password').addClass('is-valid').removeClass('is-invalid');
+          $('#btn-enviar').attr('disabled', false);
+        }else{
+          $('#resultado_password').text('¡No son iguales!');
+          $('#resultado_password').addClass('is-invalid').removeClass('is-valid');
+          $('input#password').addClass('is-invalid').removeClass('is-valid');
+          $('#repetir_password').addClass('is-invalid').removeClass('is-valid');
+          $('#resultado_password').addClass('invalid-feedback').removeClass('valid-feedback');
+          $('#btn-enviar').attr('disabled', true);
+        }
+      }
     });
-        // var forms = $('needs-validation');
-        // $('#btn-enviar').submit(function(event){
-        //   if (form.checkValidity() === false) {
-        //     event.preventDefault();
-        //     event.stopPropagation();
-        //   }
-        //   $('#guardar-registro').addClass('was-validated')
-        // })
 
+    $('#repetir_password').on('input', function(){
+        let password_nuevo = $('#password').val();
+        if($(this).val() == password_nuevo){
+          $('#resultado_password').text('Correcto');
+          $('#resultado_password').addClass('valid-feedback').removeClass('invalid-feedback');
+          $('input#password').addClass('is-valid').removeClass('is-invalid');
+          $('#repetir_password').addClass('is-valid').removeClass('is-invalid');
+          $('#btn-enviar').attr('disabled', false);
+        }else{
+          $('#resultado_password').text('¡No son iguales!');
+          $('#resultado_password').addClass('is-invalid').removeClass('is-valid');
+          $('input#password').addClass('is-invalid').removeClass('is-valid');
+          $('#repetir_password').addClass('is-invalid').removeClass('is-valid');
+          $('#resultado_password').addClass('invalid-feedback').removeClass('valid-feedback');
+          $('#btn-enviar').attr('disabled', true);
+        }
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 
   });
+
+
+
+    // VALIDACION DE CAMPOS DEL FORMULARIO DE BOOTSTRAP
+    //   // Ejemplo de JavaScript de inicio para deshabilitar los envíos de formularios si hay campos no válidos
+    //   window.addEventListener('load', function() {
+    //     // Obtenga todos los formularios a los que queremos aplicar estilos personalizados de validación Bootstrap
+    //     var forms = $('needs-validation');
+    //     // Bucle sobre ellos y evitar la presentación
+    //     var validation = Array.prototype.filter.call(forms, function(form) {
+    //       form.addEventListener('submit', function(event) {
+    //         if (form.checkValidity() === false) {
+    //           event.preventDefault();
+    //           event.stopPropagation();
+    //         }
+    //         form.classList.add('was-validated');
+    //       }, false);
+    //     });
+    //   }, false);

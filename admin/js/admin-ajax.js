@@ -30,8 +30,31 @@ $(document).ready(function(){
                         );
                     }
                 }               
-            });
-        });   
+        });
+    });  
+    
+    $('.borrar_registro').on('click', function(e){
+        e.preventDefault();
+        var ID = $(this).attr('data-id');
+        var tipo = $(this).attr('data-tipo');
+        $.ajax({
+            type: 'post',
+            data: {
+                ID_registro: ID,
+                registro: 'eliminar'
+            },
+            url: 'modelo-'+tipo+'.php',
+            dataType: 'json',
+            success: function(data){
+                // var resultado = data;   
+                // if(resultado.respuesta == 'exito'){
+                    // $('data-id="'+resultado.ID_eliminado+'"]').parents('tr').remove();
+                // }
+
+                console.log(jQuery('data-id="'+data+'"]').val());
+            }               
+        });
+    });
 
     $('#login-admin').on('submit', function(e){
         e.preventDefault();
