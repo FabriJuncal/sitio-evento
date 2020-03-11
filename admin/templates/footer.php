@@ -22,6 +22,8 @@
 <script src="js/sweetalert2.all.min.js"></script>
 <!-- Ajax's  -->
 <script src="js/admin-ajax.js"></script>
+<!-- login-ajax -->
+<script src="js/login-ajax.js"></script>
 <!-- App.Js -->
 <script src="js/app.js"></script>
 </body>

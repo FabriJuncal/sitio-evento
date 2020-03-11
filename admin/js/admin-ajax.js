@@ -1,7 +1,10 @@
 $(document).ready(function(){
+    // Evento para Crear y Editar registro
     $('#guardar-registro').on('submit', function(e){
         e.preventDefault();
         
+        // serializeArray(): Transforma los valores de los elementos de un formulario en una matriz de objetos de JavaScript,
+        // lista para ser codigicada como una cadena JSON
         var  datos = $(this).serializeArray();
         
         $.ajax({
@@ -12,17 +15,23 @@ $(document).ready(function(){
             success: function(data){
                     var resultado = data;
                     if(resultado.respuesta === 'exito'){
-                        // Variable Dinamica
+                        // Declaración Dinamica de Variable
                         accion = (resultado.accion == 'crear' ? 'creó' :
-                                 (resultado.accion == 'editar' ? 'actualizó' :
-                                 (resultado.accion == 'eliminar' ? 'eliminó' : 'error')));
-
+                                 (resultado.accion == 'editar' ? 'actualizó' : 'error'));
+                        // Mensaje del Plugin.js - SweetAlert2
                         Swal.fire(
                             '¡CORRECTO!',
                             'El administrador se ' + accion + ' correctamente',
                             'success'
                         );
+                        // Ejecutamos una Funcion Anonima luego de 2000 Milisegundos
+                        setTimeout(function(){
+                            // Redirecciona al archivo "admin-area.php"
+                            window.location.href = 'admin-area.php';
+                        }, 2000);
+
                     }else{
+                        // Mensaje del Plugin.js - SweetAlert2
                         Swal.fire(
                             '¡ERROR!',
                             'Algo salio mal',
@@ -32,60 +41,52 @@ $(document).ready(function(){
                 }               
         });
     });  
-    
+    // Evento para Eliminar registro
     $('.borrar_registro').on('click', function(e){
         e.preventDefault();
         var ID = $(this).attr('data-id');
         var tipo = $(this).attr('data-tipo');
-        $.ajax({
-            type: 'post',
-            data: {
-                ID_registro: ID,
-                registro: 'eliminar'
-            },
-            url: 'modelo-'+tipo+'.php',
-            dataType: 'json',
-            success: function(data){
-                // var resultado = data;   
-                // if(resultado.respuesta == 'exito'){
-                    // $('data-id="'+resultado.ID_eliminado+'"]').parents('tr').remove();
-                // }
-
-                console.log(jQuery('data-id="'+data+'"]').val());
-            }               
-        });
-    });
-
-    $('#login-admin').on('submit', function(e){
-        e.preventDefault();
-        
-        var  datos = $(this).serializeArray();
-        
-        $.ajax({
-            type: $(this).attr('method'),
-            data: datos,
-            url: $(this).attr('action'),
-            dataType: 'json',
-            success: function(data){
-                var resultado = data;
-                if(resultado.respuesta === 'exito'){
-                    Swal.fire(
-                        'Login Correcto',
-                        '¡Bienvenid@ '+resultado.nombre+'!',
-                        'success'
-                    )
-
-                    setTimeout(function(){
-                        window.location.href = 'admin-area.php';
-                    }, 2000);
-                }else{
-                    Swal.fire(
-                        '¡ERROR!',
-                        'Usuario o Contraseña incorrecto',
-                        'error'      
-                    )
-                }
+        // Mensaje del Plugin.js - SweetAlert2
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: "Un registro eliminado no se puede recuperar",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: '¡Si, eliminar!',
+            cancelButtonText: 'Cancelar'
+          }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: 'post',
+                    data: {
+                        ID_registro: ID,
+                        registro: 'eliminar'
+                    },
+                    url: 'modelo-'+tipo+'.php',
+                    dataType: 'json',
+                    success: function(data){
+                        var resultado = data;   
+                        if(resultado.respuesta == 'exito'){
+                            Swal.fire(
+                                '¡Eliminado!',
+                                'Registro eliminado.',
+                                'success'
+                            );
+                            $('a[data-id='+resultado.ID_eliminado+']').parents('tr').remove();
+                        }else{
+                            Swal.fire(
+                                '¡Error!',
+                                'Registro eliminado.',
+                                'error'
+                            );
+                        }        
+                    }               
+                });
             }
-        })
+          })
     });
+
+
 });

@@ -136,7 +136,7 @@
               </li>
             </ul>
           </li>
-
+ <?php   if($_SESSION['nivel'] == 1): ?> <!-- Solo el administrador con Nivel 1 podra ver este menu -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
              <i class="nav-icon fas fa-user-tie"></i>
@@ -161,7 +161,7 @@
               </li>
             </ul>
           </li>
-
+<?php   endif ?> <!-- Fin de condición -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
              <i class="nav-icon fas fa-comments"></i>

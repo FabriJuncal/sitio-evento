@@ -15,12 +15,12 @@
             <!-- Notifications Dropdown Menu -->
             <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
-              <i class="fas fa-user mr-2"></i> Admin
+              <i class="fas fa-user mr-2"></i> <?=$_SESSION['nombre']?>
             </a>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
               
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">
+              <a href="editar-admin.php?id=<?=$_SESSION['id_admin']?>" class="dropdown-item">
                 <i class="fas fa-cogs mr-2"></i></i> Configuración
               </a>
               <div class="dropdown-divider"></div>

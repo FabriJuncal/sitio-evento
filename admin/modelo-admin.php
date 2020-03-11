@@ -67,7 +67,7 @@ if(isset($_POST['registro'])){
             }
 
             $stmt->execute();
-            if($stmt->affected_rows > 0){
+            if($stmt->affected_rows > 0){              
                 $respuesta = array(
                     'respuesta' => 'exito',
                     'accion' => $_POST['registro']
@@ -90,76 +90,27 @@ if(isset($_POST['registro'])){
     // ELiminar el Usuario
     if($_POST['registro'] == 'eliminar'){
 
-        // try{
-        //     $stmt = $conn->prepare("DELETE FROM admins WHERE id_admin = ?");
-        //     $stmt->bind_param("i", $id_registro);
-        //     $stmt->execute();
-        //     if($stmt->affected_rows > 0){
-        //         $respuesta = array(
-        //             'respuesta' => 'exito',
-        //             'ID_eliminado' => $id_registro,
-        //             'accion' => $_POST['registro']
-        //         );
-        //     }else{
-        //         $respuesta = array(
-        //             'respuesta' => 'error'
-        //         );
-        //     }
-        // }catch(Exception $e){
-        //     $respuesta = array(
-        //         'respuesta' => $e->getMessage()
-        //     );
-        // }
-
-        die(json_encode($id_registro));
-    }
-}
-// Logea al Usuario
-if(isset($_POST['login-admin'])){
-    $usuario = $_POST['usuario'];
-    $password = $_POST['password'];
-
-    try{
-        include_once "funciones/funciones.php";
-        $stmt = $conn->prepare("SELECT id_admin, usuario, nombre, password FROM admins WHERE usuario = ?");
-        $stmt->bind_param("s", $usuario);
-        $stmt->execute();
-        $stmt->bind_result($id_admin, $usuario_admin, $nombre_admin, $password_admin);
-        if($stmt->affected_rows){
-            $existe = $stmt->fetch();
-            if($existe){
-                //password_verify(): Funcion que realiza la conversion de la contraseña y compara con la contraseña encriptada
-                // 1er parametro($password): Contraseña desencriptada que incresa el usuario.
-                // 2do parametreo($password_admin): Contraseña encriptada que se encuentra almacenada en la base de datos
-                if(password_verify($password, $password_admin)){
-                    // Iniciamos la Sesion cuando el Login es correcto
-                    session_start();
-                    // Cargamos los datos en la variable "$_SESSION" y esta se almacena en el servidor
-                    $_SESSION['usuario'] = $usuario_admin;
-                    $_SESSION['nombre'] = $nombre_admin;
-
-                    $respuesta = array(
-                        'respuesta' => 'exito',
-                        'nombre' => $nombre_admin
-                    );
-                }else{
-                    // No coincide la Contraseña
-                    $respuesta = array(
-                        'respuesta' => 'error'
-                    );
-                }
+        try{
+            $stmt = $conn->prepare("DELETE FROM admins WHERE id_admin = ?");
+            $stmt->bind_param("i", $id_registro);
+            $stmt->execute();
+            if($stmt->affected_rows > 0){
+                $respuesta = array(
+                    'respuesta' => 'exito',
+                    'ID_eliminado' => $id_registro,
+                    'accion' => $_POST['registro']
+                );
             }else{
-                // No se encuentra el Usuario
                 $respuesta = array(
                     'respuesta' => 'error'
                 );
             }
+        }catch(Exception $e){
+            $respuesta = array(
+                'respuesta' => $e->getMessage()
+            );
         }
-        $stmt->close();
-        $conn->close();
-    }catch(Exception $e){
-        echo "Error: " . $e->getMessage();
-    }
 
-    die(json_encode($respuesta));
+        die(json_encode($respuesta));
+    }
 }
