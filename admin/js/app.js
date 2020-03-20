@@ -63,6 +63,14 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
         }
     });
 
+    //Datemask dd/mm/yyyy
+    $('.datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+
+    //Date picker
+    $('.datepicker').datepicker({
+      autoclose: true
+    })
+
     
 
   });

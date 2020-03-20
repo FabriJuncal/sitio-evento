@@ -14,8 +14,8 @@ include_once 'templates/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Crear Administrador</h1>
-            <span>Llena el formulario para crear un administrador</span>
+            <h1>Crear Evento</h1>
+            <span>Llena el formulario para crear un evento</span>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -33,24 +33,34 @@ include_once 'templates/sidebar.php';
               <div class="card-body">
                             <div class="card card-info">
                     <div class="card-header">
-                      <h3 class="card-title">Crear Administrador</h3>
+                      <h3 class="card-title">Crear Evento</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form class="form-horizontal needs-validation" name="guardar-registro" id="guardar-registro" method="post" action="modelo-admin.php" >
+                    <form class="form-horizontal needs-validation" name="guardar-registro" id="guardar-registro" method="post" action="modelo-evento.php" >
                       <div class="card-body">
                            <div class="form-group row">
-                              <label for="usuario" class="col-sm-2 col-form-label">Usuario:</label>
+                              <label for="titulo_evento" class="col-sm-2 col-form-label">Titulo:</label>
                               <div class="col-sm-10">
-                                <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required>
+                                <input type="text" class="form-control" id="titulo_evento" name="titulo_evento" placeholder="Titulo Evento" required>
                               </div>
                             </div>
+                        <!-- Date range -->
                             <div class="form-group row">
-                                <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
-                                <div class="col-sm-10">
-                                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu Nombre Completo" required>
+                                <label for="fecha_evento" class="col-sm-2 col-form-label">Fecha:</label>
+                                <div class=" row col-sm-10">
+                                    <div class="input-group-prepend col-sm-1">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <input type="text" class="form-control float-right datepicker datemask" id="fecha_evento" name="fecha_evento" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
+                                    </div>
                                 </div>
+                            <!-- /.input group -->
                             </div>
+                            <!-- /.form group -->
                             <div class="form-group row">
                               <label for="password" class="col-sm-2 col-form-label">Contraseña:</label>
                               <div class="col-sm-10">
