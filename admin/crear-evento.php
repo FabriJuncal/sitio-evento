@@ -45,7 +45,7 @@ include_once 'templates/sidebar.php';
                                 <input type="text" class="form-control" id="titulo_evento" name="titulo_evento" placeholder="Titulo Evento" required>
                               </div>
                             </div>
-                        <!-- Date range -->
+                        <!-- Date Picker - Plugin.js-->
                             <div class="form-group row">
                                 <label for="fecha_evento" class="col-sm-2 col-form-label">Fecha:</label>
                                 <div class=" row col-sm-10">
@@ -58,20 +58,42 @@ include_once 'templates/sidebar.php';
                                         <input type="text" class="form-control float-right datepicker datemask" id="fecha_evento" name="fecha_evento" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                                     </div>
                                 </div>
-                            <!-- /.input group -->
                             </div>
-                            <!-- /.form group -->
+                            <!-- Select2 - Plugin.js -->
                             <div class="form-group row">
-                              <label for="password" class="col-sm-2 col-form-label">Contraseña:</label>
+                              <label for="categoria_evento" class="col-sm-2 col-form-label">Categoría:</label>
                               <div class="col-sm-10">
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" >
+                                <select class="select2" style="width: 100%;">
+                                  <option value="0">-- Seleccione --</option>
+<?php                               
+                                    try {
+                                      $sql = "SELECT * FROM categoria_evento";
+                                      $resultado = $conn->query($sql);
+                                      while($cat_evento = $resultado->fetch_assoc()){
+?>
+                                        <option value="<?=$cat_evento['id_categoria']?>">
+                                          <?=$cat_evento['cat_evento']?>
+                                        </option>
+<?php                                 }
+                                    } catch (Exception $e) {
+                                      echo "Error: " . $e->getMessage();
+                                    }
+?>
+                                </select>
                               </div>
                             </div>
+                            <!-- Time Picker - Plugin.js -->
                             <div class="form-group row">
-                              <label for="repetir_password" class="col-sm-2 col-form-label">Repetir Contraseña:</label>
-                              <div class="col-sm-10">
-                                <input type="password" class="form-control" id="repetir_password" name="repetir_password" placeholder="Repetir Contraseña" >
-                                <span id="resultado_password"></span>
+                              <label for="hora_evento" class="col-sm-2 col-form-label">Hora:</label>
+                              <div class=" row col-sm-10">
+                                  <div class="input-group-prepend col-sm-1">
+                                      <span class="input-group-text">
+                                        <i class="far fa-clock"></i>
+                                      </span>
+                                  </div>
+                                  <div class="date timepicker col-sm-5" id="timepicker" data-target-input="nearest">
+                                  <input type="text" class="form-control datetimepicker-input" id="hora_evento" name="fecha_evento" data-toggle="datetimepicker" data-target="#timepicker"/>
+                                  </div>
                               </div>
                             </div>
                         </div>

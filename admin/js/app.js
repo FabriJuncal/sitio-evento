@@ -1,5 +1,6 @@
 $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se termina de cargar la pagina
-  // Iniciación de la tabla del Plugin.js DataTable.js
+
+  // Tabla Dinamica - DataTable - Plugin.js
     $('#registros').DataTable({
       "paging": true, // Paginación
       "lengthChange": true, // Tamaño de cantidad de registros que se muestran en la tabla
@@ -22,9 +23,12 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
         processing: "Procesando..."
       }
     });
+// =========================================================================================================================================================
 
+    // Desabilita el Botón
     $('#btn-enviar').attr('disabled', true);
 
+//   Estilos Bootstrap de las validaciones del Formulario ===============================================================================================================
     $('input#password').on('input', function(){
       let password_nuevo = $('#repetir_password').val();
       if(password_nuevo != ''){   
@@ -62,17 +66,25 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
           $('#btn-enviar').attr('disabled', true);
         }
     });
+// ==============================================================================================================================================
+  // CAMPO FECHA
 
-    //Datemask dd/mm/yyyy
+    //Mascara de campo fecha dd/mm/yyyy - Input Masck - Plugin.JS
     $('.datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
 
-    //Date picker
+    //Calendario - Date Picker Bootstrap - Plugin.JS
     $('.datepicker').datepicker({
-      autoclose: true
+      autoclose: true,  // En estado "TRUE" se cierra automaticamente al seleccionar la fecha
+      format: 'dd/mm/yyyy' // Formato en el que se escribira la fecha en el campo
     })
+// ==============================================================================================================================================
+      //Combo box / Select Dinamico - Select2 - Plugin.js
+      $('.select2').select2()
 
-    
-
+          //Timepicker
+    $('.timepicker').datetimepicker({
+      format: 'LT'
+    })
   });
 
 

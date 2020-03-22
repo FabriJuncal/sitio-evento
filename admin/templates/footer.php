@@ -15,10 +15,14 @@
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap4.min.js"></script>
 <!-- bootstrap datepicker -->
-<script src="js/bootstrap-datepicker.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
 <!-- InputMask -->
 <script src="plugins/moment/moment.min.js"></script>
 <script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="js/select2.full.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- AdminLTE App -->
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->

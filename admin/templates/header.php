@@ -7,6 +7,11 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Select2 -->
+  <link rel="stylesheet" href="css/select2.min.css">
+  <link rel="stylesheet" href="css/select2-bootstrap4.min.css">
+  <!-- Tempusdominus Bbootstrap 4 -->
+  <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -16,7 +21,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
  <!-- bootstrap datepicker -->
-  <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
   <!-- Sweet Alert 2 -->
