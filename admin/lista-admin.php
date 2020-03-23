@@ -33,6 +33,7 @@ include_once 'templates/sidebar.php';
               <table id="registros" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th>ID Usuario</th>
                   <th>Usuario</th>
                   <th>Nombre</th>
                   <th>Acciones</th>
@@ -52,6 +53,7 @@ include_once 'templates/sidebar.php';
                     while($admin = $resultado->fetch_assoc()){
 ?>
                       <tr>
+                        <td><?=$admin['id_admin']?></td>
                         <td><?=$admin['usuario']?></td>
                         <td><?=$admin['nombre']?></td>
                         <td>

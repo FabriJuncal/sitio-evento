@@ -12,7 +12,7 @@ include_once "funciones/funciones.php";
 $usuario = (isset($_POST['usuario']) ? $_POST['usuario'] : null);
 $nombre = (isset($_POST['nombre']) ? $_POST['nombre'] : null);
 $password = (isset($_POST['password']) ? $_POST['password'] : null);
-$id_registro = (isset($_POST['ID_registro']) ? $_POST['ID_registro'] : null);
+$id_registro = (isset($_POST['id_registro']) ? $_POST['id_registro'] : null);
 
 // ABM Usuarios
 if(isset($_POST['registro'])){

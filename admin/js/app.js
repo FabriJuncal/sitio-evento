@@ -5,9 +5,14 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
       "paging": true, // Paginación
       "lengthChange": true, // Tamaño de cantidad de registros que se muestran en la tabla
       "searching": true, // Buscadors
-      "ordering": true, // Ordernar
+      "ordering": true, // Habilita la funcion Ordernar por Columna
+      "order": [0, 'desc'], // La tabla se carga ordenando por la Columna 1 de manera Descendiente
       "info": true, // Informacion del total de registros que tiene la tabla
       "autoWidth": true, //Ajuste automatico del ancho
+      "columnDefs": [{ // Configuramos la columna nro "0" para que sea invisible
+            "targets": [ 0 ],
+            "visible": false,
+        }],
       "language": { // Formateamos el Idioma del Texto en la Tabla
         paginate: { 
           next: "Siguiente",
@@ -38,14 +43,14 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
           $('#resultado_password').addClass('valid-feedback').removeClass('invalid-feedback');
           $('input#password').addClass('is-valid').removeClass('is-invalid');
           $('#repetir_password').addClass('is-valid').removeClass('is-invalid');
-          $('#btn-enviar').attr('disabled', false);
+          $('#btn-enviar-admin').attr('disabled', false);
         }else{
           $('#resultado_password').text('¡No son iguales!');
           $('#resultado_password').addClass('is-invalid').removeClass('is-valid');
           $('input#password').addClass('is-invalid').removeClass('is-valid');
           $('#repetir_password').addClass('is-invalid').removeClass('is-valid');
           $('#resultado_password').addClass('invalid-feedback').removeClass('valid-feedback');
-          $('#btn-enviar').attr('disabled', true);
+          $('#btn-enviar-admin').attr('disabled', true);
         }
       }
     });
@@ -57,14 +62,14 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
           $('#resultado_password').addClass('valid-feedback').removeClass('invalid-feedback');
           $('input#password').addClass('is-valid').removeClass('is-invalid');
           $('#repetir_password').addClass('is-valid').removeClass('is-invalid');
-          $('#btn-enviar').attr('disabled', false);
+          $('#btn-enviar-admin').attr('disabled', false);
         }else{
           $('#resultado_password').text('¡No son iguales!');
           $('#resultado_password').addClass('is-invalid').removeClass('is-valid');
           $('input#password').addClass('is-invalid').removeClass('is-valid');
           $('#repetir_password').addClass('is-invalid').removeClass('is-valid');
           $('#resultado_password').addClass('invalid-feedback').removeClass('valid-feedback');
-          $('#btn-enviar').attr('disabled', true);
+          $('#btn-enviar-admin').attr('disabled', true);
         }
     });
 // ==============================================================================================================================================

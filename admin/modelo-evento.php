@@ -9,19 +9,23 @@ include_once "funciones/funciones.php";
                                                         // }
 
 // Datos Obtenidos del POST
+$id_registro = (isset($_POST['id_registro']) ? $_POST['id_registro'] : null);
 $titulo = (isset($_POST['titulo_evento']) ? $_POST['titulo_evento'] : null);
+
+// Formateo de la Fecha
 $fecha = (isset($_POST['fecha_evento']) ? $_POST['fecha_evento'] : null);
+$fecha = str_replace("/", "-", $fecha);
 $fecha_formateada = date('Y-m-d', strtotime($fecha)); // Formatea la fecha obtenida
-$categoria = (isset($_POST['categoria_evento']) ? $_POST['categoria_evento'] : null);
+// Formateo de Hora
 $hora = (isset($_POST['hora_evento']) ? $_POST['hora_evento'] : null);
 $hora_formateada = date('H:i', strtotime($hora)); // Formatea la hora obtenida a 24hrs. si agregamos 'H:i a' se formatea a AM/PM
+
+$categoria = (isset($_POST['categoria_evento']) ? $_POST['categoria_evento'] : null);
 $invitado = (isset($_POST['invitado_evento']) ? $_POST['invitado_evento'] : null);
 
-$id_registro = (isset($_POST['id_registro']) ? $_POST['id_registro'] : null);
 
 // ABM Eventos
 if(isset($_POST['registro'])){
-
     // Crea un Evento
     if($_POST['registro'] == 'crear'){
 
@@ -52,7 +56,7 @@ if(isset($_POST['registro'])){
     }
     // Modifica el Evento
     if($_POST['registro'] == 'editar'){
-        
+
         try{
             $stmt = $conn->prepare("UPDATE eventos SET nombre_evento = ?, fecha_evento = ?, hora_evento = ?, id_cat_evento = ?, id_inv = ?, editado = NOW() WHERE evento_id = ?");
             $stmt->bind_param("sssiii", $titulo, $fecha_formateada, $hora_formateada, $categoria, $invitado, $id_registro);

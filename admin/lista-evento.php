@@ -33,6 +33,7 @@ include_once 'templates/sidebar.php';
               <table id="registros" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th>ID Evento</th>
                   <th>Nombre</th>
                   <th>Fecha</th>
                   <th>Hora</th>
@@ -51,7 +52,7 @@ include_once 'templates/sidebar.php';
                               ON eventos.id_cat_evento = categoria_evento.id_categoria
                               INNER JOIN invitados
                               ON eventos.id_inv = invitados.invitado_id
-                              ORDER BY evento_id ";
+                              ORDER BY evento_id DESC";
                       $resultado =  $conn->query($sql);
                     }catch (Exception $e){
                       $error = $e->getMessage();
@@ -61,6 +62,7 @@ include_once 'templates/sidebar.php';
                     while($eventos = $resultado->fetch_assoc()){
 ?>
                       <tr>
+                        <td><?=$eventos['evento_id']?></td>
                         <td><?=$eventos['nombre_evento']?></td>
                         <td><?=$eventos['fecha_evento']?></td>
                         <td><?=$eventos['hora_evento']?></td>

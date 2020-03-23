@@ -81,7 +81,7 @@ $admin = $resultado->fetch_assoc();
                       <!-- /.card-body -->
                       <div class="card-footer">
                         <input type="hidden" name="registro" value="editar">
-                        <input type="hidden" name="ID_registro" value="<?=$id?>">
+                        <input type="hidden" name="id_registro" value="<?=$id?>">
                         <button type="submit" id="btn-enviar" class="btn btn-info">Añadir</button>
                       </div>
                       <!-- /.card-footer -->
