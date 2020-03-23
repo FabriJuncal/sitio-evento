@@ -67,10 +67,10 @@ include_once 'templates/sidebar.php';
                         <td><?=$eventos['cat_evento']?></td>
                         <td><?=$eventos['nombre_invitado'] . " " . $eventos['apellido_invitado']?></td>
                         <td>
-                          <a href="editar-admin.php?id=<?=$eventos['evento_id']?>" class="btn bg-gradient-info btn-sm ml-1 ">
+                          <a href="editar-evento.php?id=<?=$eventos['evento_id']?>" class="btn bg-gradient-info btn-sm ml-1 ">
                             <i class="fa fa-pencil-alt"></i>
                           </a>
-                          <a href="#" data-id="<?=$eventos['evento_id']?>" data-tipo="admin" class="btn bg-gradient-danger btn-sm ml-2 borrar_registro">
+                          <a href="#" data-id="<?=$eventos['evento_id']?>" data-tipo="evento" class="btn bg-gradient-danger btn-sm ml-2 borrar_registro">
                             <i class="fa fa-trash-alt"></i>
                           </a>
                         </td>

@@ -9,25 +9,25 @@ include_once "funciones/funciones.php";
                                                         // }
 
 // Datos Obtenidos del POST
-$usuario = (isset($_POST['usuario']) ? $_POST['usuario'] : null);
-$nombre = (isset($_POST['nombre']) ? $_POST['nombre'] : null);
-$password = (isset($_POST['password']) ? $_POST['password'] : null);
-$id_registro = (isset($_POST['ID_registro']) ? $_POST['ID_registro'] : null);
+$titulo = (isset($_POST['titulo_evento']) ? $_POST['titulo_evento'] : null);
+$fecha = (isset($_POST['fecha_evento']) ? $_POST['fecha_evento'] : null);
+$fecha_formateada = date('Y-m-d', strtotime($fecha)); // Formatea la fecha obtenida
+$categoria = (isset($_POST['categoria_evento']) ? $_POST['categoria_evento'] : null);
+$hora = (isset($_POST['hora_evento']) ? $_POST['hora_evento'] : null);
+$hora_formateada = date('H:i', strtotime($hora)); // Formatea la hora obtenida a 24hrs. si agregamos 'H:i a' se formatea a AM/PM
+$invitado = (isset($_POST['invitado_evento']) ? $_POST['invitado_evento'] : null);
 
-// ABM Usuarios
+$id_registro = (isset($_POST['id_registro']) ? $_POST['id_registro'] : null);
+
+// ABM Eventos
 if(isset($_POST['registro'])){
-    // Crea un Usuario
+
+    // Crea un Evento
     if($_POST['registro'] == 'crear'){
 
-        $opciones = array(
-            'cost' => 12
-        );
-        //password_hash(): Funcion para encriptar la contraseña, siempre devuelve un string de 60 caracteres.
-        //                 El parametro "opciones" representa el costo de la encriptacion, cuanto mas costo, mas segura es.
-        $password_hashed = password_hash($password, PASSWORD_BCRYPT, $opciones);
         try{
-            $stmt = $conn->prepare("INSERT INTO admins (usuario, nombre, password) VALUES (?,?,?)");
-            $stmt->bind_param("sss", $usuario, $nombre, $password_hashed);
+            $stmt = $conn->prepare("INSERT INTO eventos (nombre_evento, fecha_evento, hora_evento, id_cat_evento, id_inv) VALUES (?,?,?,?,?)");
+            $stmt->bind_param("sssii", $titulo, $fecha_formateada, $hora_formateada, $categoria, $invitado);
             $stmt->execute();
             if($stmt->affected_rows > 0){
                 $respuesta = array(
@@ -43,29 +43,19 @@ if(isset($_POST['registro'])){
             $stmt->close();
             $conn->close();
         }catch(Exception $e){
-            echo "Error: " . $e->getMessage();
+            $respuesta = array(
+                'respuesta' => $e->getMessage()
+            );
         }
 
         die(json_encode($respuesta));
     }
-    // Modifica el Usuario
+    // Modifica el Evento
     if($_POST['registro'] == 'editar'){
-
+        
         try{
-            if(empty($_POST['password'])){
-                $stmt = $conn->prepare("UPDATE admins SET usuario = ?, nombre = ?, editado = NOW() WHERE id_admin = ?");
-                $stmt->bind_param("ssi", $usuario, $nombre, $id_registro);
-            }else{
-                $opciones = array(
-                    'cost' => 12
-                );
-                //password_hash(): Funcion para encriptar la contraseña, siempre devuelve un string de 60 caracteres.
-                //                 El parametro "opciones" representa el costo de la encriptacion, cuanto mas costo, mas segura es.
-                $password_hashed = password_hash($password, PASSWORD_BCRYPT, $opciones);
-                $stmt = $conn->prepare("UPDATE admins SET usuario = ?, nombre = ?, password = ?, editado = NOW() WHERE id_admin = ?");
-                $stmt->bind_param("sssi", $usuario, $nombre, $password_hashed, $id_registro);
-            }
-
+            $stmt = $conn->prepare("UPDATE eventos SET nombre_evento = ?, fecha_evento = ?, hora_evento = ?, id_cat_evento = ?, id_inv = ?, editado = NOW() WHERE evento_id = ?");
+            $stmt->bind_param("sssiii", $titulo, $fecha_formateada, $hora_formateada, $categoria, $invitado, $id_registro);
             $stmt->execute();
             if($stmt->affected_rows > 0){              
                 $respuesta = array(
@@ -88,19 +78,18 @@ if(isset($_POST['registro'])){
 
         die(json_encode($respuesta));
     }
-    // ELiminar el Usuario
+    // // ELiminar el Evento
     if($_POST['registro'] == 'eliminar'){
-
+        
         try{
-            $stmt = $conn->prepare("DELETE FROM admins WHERE id_admin = ?");
+            $stmt = $conn->prepare("DELETE FROM eventos WHERE evento_id = ?");
             $stmt->bind_param("i", $id_registro);
             $stmt->execute();
             if($stmt->affected_rows > 0){
                 $respuesta = array(
                     'respuesta' => 'exito',
                     'accion' => $_POST['registro'],
-                    'ID_eliminado' => $id_registro
-
+                    'ID_eliminado' => $id_registro,
                 );
             }else{
                 $respuesta = array(

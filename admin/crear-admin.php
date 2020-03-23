@@ -69,7 +69,7 @@ include_once 'templates/sidebar.php';
                       <!-- /.card-body -->
                       <div class="card-footer">
                         <input type="hidden" name="registro" value="crear">
-                        <button type="submit" id="btn-enviar" class="btn btn-info">Enviar</button>
+                        <button type="submit" id="btn-enviar-admin" class="btn btn-info">Enviar</button>
                       </div>
                       <!-- /.card-footer -->
                     </form>
@@ -80,7 +80,6 @@ include_once 'templates/sidebar.php';
             </div>
         <!-- /.card -->
           </div>
-      </div>
     </section>
     <!-- /.content -->
   </div>

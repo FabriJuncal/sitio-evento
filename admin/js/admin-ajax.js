@@ -12,8 +12,9 @@ $(document).ready(function(){
             data: datos,
             url: $(this).attr('action'),
             dataType: 'json',
-            success: function(data){
-                    var resultado = data;
+            success: function(data){  
+
+                    resultado = data;             
                     if(resultado.respuesta === 'exito'){
                         // Declaración Dinamica de Variable
                         accion = (resultado.accion == 'crear' ? 'creó' :
@@ -21,7 +22,7 @@ $(document).ready(function(){
                         // Mensaje del Plugin.js - SweetAlert2
                         Swal.fire(
                             '¡CORRECTO!',
-                            'El administrador se ' + accion + ' correctamente',
+                            'El registro se ' + accion + ' correctamente',
                             'success'
                         );
                         // Ejecutamos una Funcion Anonima luego de 2000 Milisegundos
@@ -61,12 +62,13 @@ $(document).ready(function(){
                 $.ajax({
                     type: 'post',
                     data: {
-                        ID_registro: ID,
+                        id_registro: ID,
                         registro: 'eliminar'
                     },
                     url: 'modelo-'+tipo+'.php',
                     dataType: 'json',
                     success: function(data){
+                        console.log(data);
                         var resultado = data;   
                         if(resultado.respuesta == 'exito'){
                             Swal.fire(
@@ -78,7 +80,7 @@ $(document).ready(function(){
                         }else{
                             Swal.fire(
                                 '¡Error!',
-                                'Registro eliminado.',
+                                'Algo salio mal',
                                 'error'
                             );
                         }        
