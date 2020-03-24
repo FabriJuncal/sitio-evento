@@ -167,7 +167,7 @@ if(!filter_var($id, FILTER_VALIDATE_INT)){
                       <div class="card-footer">
                         <input type="hidden" name="registro" value="editar">
                         <input type="hidden" name="id_registro" value="<?=$id?>">
-                        <button type="submit" class="btn btn-info">Enviar</button>
+                        <button type="submit" id="btn-enviar-evento" class="btn btn-info">Enviar</button>
                       </div><!-- /.card-footer -->
                     </form>
                   </div>

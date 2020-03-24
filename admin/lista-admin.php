@@ -71,6 +71,7 @@ include_once 'templates/sidebar.php';
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th>ID Usuario</th>
                   <th>Usuario</th>
                   <th>Nombre</th>
                   <th>Acciones</th>

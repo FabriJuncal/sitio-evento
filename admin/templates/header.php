@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- IconPicker -->
+  <link rel="stylesheet" href="css/fontawesome-iconpicker.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->

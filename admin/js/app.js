@@ -76,22 +76,25 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
   // CAMPO FECHA / HORA
 
     //Mascara de campo fecha dd/mm/yyyy - Input Masck - Plugin.JS
-    $('.datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    $('.datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
 
     //Calendario - Date Picker Bootstrap - Plugin.JS
     $('.datepicker').datepicker({
       autoclose: true,  // En estado "TRUE" se cierra automaticamente al seleccionar la fecha
       format: 'dd/mm/yyyy' // Formato en el que se escribira la fecha en el campo
-    })
+    });
 
     //Ingreso de Hora - Timepicker - Plugin.js
     $('.timepicker').datetimepicker({
       format: 'LT'
-    })
+    });
 // ==============================================================================================================================================
       //Combo box / Select Dinamico - Select2 - Plugin.js
-      $('.select2').select2()
+      $('.select2').select2();
 // ==============================================================================================================================================
+      //Mini Cuadro de Iconos - IconPicker - Plugin.js
+      $('.iconpicker').iconpicker();
+      $("div.iconpicker-popover").removeClass('fade');
 
   });
 
