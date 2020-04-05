@@ -13,7 +13,7 @@ include_once 'templates/sidebar.php';
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Listado de Invitados</h1>
+            <h1>Listado de Categorías</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -25,7 +25,7 @@ include_once 'templates/sidebar.php';
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Gestiona los invitados en esta sección</h3>
+              <h3 class="card-title">Gestiona las categorías en esta sección</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -33,10 +33,9 @@ include_once 'templates/sidebar.php';
               <table id="registros" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>ID Invitado</th>
+                  <th>ID Categoria</th>
                   <th>Nombre</th>
-                  <th>Biografía</th>
-                  <th>Imagen</th>
+                  <th>Icono</th>
                   <th>Acciones</th>
                 </tr>
                 </thead>
@@ -44,26 +43,24 @@ include_once 'templates/sidebar.php';
 <?php 
                     try{
                       include_once "funciones/funciones.php";
-                      $sql = "SELECT invitado_id, nombre_invitado, apellido_invitado, descripcion, url_imagen
-                              FROM invitados";
+                      $sql = "SELECT id_categoria, cat_evento, icono FROM categoria_evento";
                       $resultado =  $conn->query($sql);
                     }catch (Exception $e){
                       $error = $e->getMessage();
                       echo $error;
                     }
 
-                    while($invitado = $resultado->fetch_assoc()){
+                    while($categoria = $resultado->fetch_assoc()){
 ?>
                       <tr>
-                        <td><?=$invitado['invitado_id']?></td>
-                        <td><?=$invitado['nombre_invitado']." ".$invitado['apellido_invitado']?></td>
-                        <td><?=$invitado['descripcion']?></td>
-                        <td><img src="../img/invitados/<?=$invitado['url_imagen']?>" alt="Imagen de Invitado" width="150"></td>
+                        <td><?=$categoria['id_categoria']?></td>
+                        <td><?=$categoria['cat_evento']?></td>
+                        <td><i class="<?=$categoria['icono']?>"></i></td>
                         <td>
-                          <a href="editar-invitado.php?id=<?=$invitado['invitado_id']?>" class="btn bg-gradient-info btn-sm ml-1 ">
+                          <a href="editar-categoria.php?id=<?=$categoria['id_categoria']?>" class="btn bg-gradient-info btn-sm ml-1 ">
                             <i class="fa fa-pencil-alt"></i>
                           </a>
-                          <a href="#" data-id="<?=$invitado['invitado_id']?>" data-tipo="invitado" class="btn bg-gradient-danger btn-sm ml-2 borrar_registro">
+                          <a href="#" data-id="<?=$categoria['id_categoria']?>" data-tipo="categoria" class="btn bg-gradient-danger btn-sm ml-2 borrar_registro">
                             <i class="fa fa-trash-alt"></i>
                           </a>
                         </td>
@@ -74,10 +71,9 @@ include_once 'templates/sidebar.php';
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>ID Invitado</th>
+                  <th>ID Categoria</th>
                   <th>Nombre</th>
-                  <th>Biografía</th>
-                  <th>Imagen</th>
+                  <th>Icono</th>
                   <th>Acciones</th>
                 </tr>
                 </tfoot>
