@@ -25,6 +25,8 @@
 <script src="js/select2.full.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- bs-custom-file-input -->
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->

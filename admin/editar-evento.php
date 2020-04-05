@@ -185,4 +185,5 @@ if(!filter_var($id, FILTER_VALIDATE_INT)){
 <?php
   include_once 'templates/footer.php';
 }
+include_once 'templates/footer.php';
 ?>
