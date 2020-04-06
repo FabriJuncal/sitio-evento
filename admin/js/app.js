@@ -2,6 +2,7 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
 
   // Tabla Dinamica - DataTable - Plugin.js
     $('#registros').DataTable({
+      "responsive": true,
       "paging": true, // Paginación
       "lengthChange": true, // Tamaño de cantidad de registros que se muestran en la tabla
       "searching": true, // Buscadors

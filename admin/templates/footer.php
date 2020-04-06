@@ -16,6 +16,8 @@
 <!-- DataTables -->
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap4.min.js"></script>
+<!-- DataTables Responsive -->
+<script src="js/dataTables.responsive.js"></script>
 <!-- bootstrap datepicker -->
 <script src="js/bootstrap-datepicker.js"></script>
 <!-- InputMask -->

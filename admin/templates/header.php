@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
+    <!-- DataTables Responsive -->
+    <link rel="stylesheet" href="css/responsive.dataTables.css">
   <!-- Sweet Alert 2 -->
   <link rel="stylesheet" href="css/sweetalert2.min.css">
   <!-- CSS Personalizado -->
