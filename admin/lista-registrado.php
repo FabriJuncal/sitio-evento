@@ -79,8 +79,39 @@ include_once 'templates/sidebar.php';
                         </td>
                         <td><?=$registado['email_registrado']?></td>
                         <td><?=$registado['fecha_registro']?></td>
-                        <td><?=$registado['pases_articulos']?></td>
-                        <td><?=$registado['talleres_registrados']?></td>
+                        <td><?php
+                                $articulos = json_decode($registado['pases_articulos'], true);
+                                
+                                $arreglo_articulos = array(
+                                  'un_dia' => 'Pase 1 día',
+                                  'pase_2dias' => 'Pase 2 días',
+                                  'pase_completo' => 'Pase Completo',
+                                  'camisas' => 'Camisas',
+                                  'etiquetas' => 'Etiquetas'
+                                );
+
+                                foreach($articulos as $llave => $articulo){
+                                  echo "<span class='badge badge-info right'>$articulo</span>"  . " " . $arreglo_articulos[$llave] . "<br>";
+                                }
+
+                            ?>
+                        </td>
+                        <td>
+                          <?php
+                           $eventos_resultado = $registado['talleres_registrados'];
+                           $talleres = json_decode($eventos_resultado, true);
+
+                           $talleres = implode("', '", $talleres['eventos']);
+                           $sql_talleres = "SELECT nombre_evento, fecha_evento, hora_evento FROM  eventos WHERE clave IN ('$talleres')";
+
+                           $resultado_talleres = $conn->query($sql_talleres);
+
+                           while($eventos = $resultado_talleres->fetch_assoc()){
+                             echo $eventos['nombre_evento'] . " " . "<small class='badge badge-primary'><i class='far fa-calendar-alt'></i>" . " " . $eventos['fecha_evento'] . " " . "<i class='far fa-clock'></i>" . $eventos['hora_evento'] . "</small><br>";
+                           }
+
+                          ?>
+                        </td>
                         <td><?=$registado['nombre_regalo']?></td>
                         <td>$ <?=$registado['total_pagado']?></td>
                         <td>
