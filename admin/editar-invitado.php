@@ -21,8 +21,8 @@ if(!filter_var($id, FILTER_VALIDATE_INT)){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Crear Invitado</h1>
-            <span>Llena el formulario para añadir un invitado</span>
+            <h1>Editar Invitado</h1>
+            <span>Llena el formulario para editar un invitado</span>
           </div>
         </div>
       </div><!-- /.container-fluid -->

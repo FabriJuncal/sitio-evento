@@ -41,7 +41,6 @@ include_once 'templates/sidebar.php';
                   <th>Talleres</th>
                   <th>Regalo</th>
                   <th>Compra</th>
-                  <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -114,14 +113,6 @@ include_once 'templates/sidebar.php';
                         </td>
                         <td><?=$registado['nombre_regalo']?></td>
                         <td>$ <?=$registado['total_pagado']?></td>
-                        <td>
-                          <a href="editar-registrado.php?id=<?=$registado['ID_Registrado']?>" class="btn bg-gradient-info btn-sm ml-1 ">
-                            <i class="fa fa-pencil-alt"></i>
-                          </a>
-                          <a href="#" data-id="<?=$registado['ID_Registrado']?>" data-tipo="registrado" class="btn bg-gradient-danger btn-sm ml-2 borrar_registro">
-                            <i class="fa fa-trash-alt"></i>
-                          </a>
-                        </td>
                       </tr>
                                          
 <?php               }
@@ -137,7 +128,6 @@ include_once 'templates/sidebar.php';
                   <th>Talleres</th>
                   <th>Regalo</th>
                   <th>Compra</th>
-                  <th>Acciones</th>
                 </tr>
                 </tfoot>
               </table>

@@ -67,10 +67,6 @@ if(isset($_POST['submit'])){
             $stmt->close();
             $conn->close();
 
-            //Header('Location: path de un sitio web'): Con esta funcion relocalicamos a un sitio web
-            // En este caso nos relocalicamos a la misma pagina con la extencion "?exitoso=1", para que cuando se recarge la pagina se borren todos los datos del formulario y no se vuelvan a reenviar a la base de datos.
-            // Pero para que la funcion Header() funcione tenemos que ubicar todo el codigo antes del <header>, es decir no se tiene que enviar ninguna etiqueta HTML ni nada, antes de esta funcion sino no va a funcionar.
-            // header('Location: validar_registro.php?exitoso=1');
         } catch(Exeption $e){
             $error = $e->getMessage();
 
@@ -169,6 +165,10 @@ try{
 
 $aprobado = $pago->getApprovalLink(); // Cargamos el link del sitio de Paypal en una variable
 
+//Header('Location: path de un sitio web'): Con esta funcion relocalicamos a un sitio web
+// En este caso nos relocalicamos a la misma pagina con la extencion "?exitoso=1", para que cuando se recarge la pagina se borren todos los datos del formulario y no se vuelvan a reenviar a la base de datos.
+// Pero para que la funcion Header() funcione tenemos que ubicar todo el codigo antes del <header>, es decir no se tiene que enviar ninguna etiqueta HTML ni nada, antes de esta funcion sino no va a funcionar.
+// header('Location: validar_registro.php?exitoso=1');
 // ADVERTENCIA: para que nos redirecione no debe nada que imprima HTML, sino no funciona
 header("Location: {$aprobado}"); // Redirecciona al sitio de Paypal
 
