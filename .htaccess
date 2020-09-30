@@ -1,0 +1,24 @@
+# Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve
+# to the front controller "/app.php" but be rewritten to "/app.php/app".
+<IfModule mod_negotiation.c>
+    #Options -MultiViews
+</IfModule>
+
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+
+    #configurar carpeta raiz del proyecto
+    RewriteBase /sitio-evento
+	
+    #Si termina en admin, redirigimos al index.
+    RewriteRule (admin|admin/)$ "admin/login.php" [QSA,NC,L,R]
+
+</IfModule>
+
+<ifModule mod_headers.c>
+	Header set X-Frame-Options SAMEORIGIN
+	Header set X-XSS-Protection "1; mode=block"
+	Header set X-Content-Type-Options nosniff
+	Header edit Set-Cookie (.*) "$1;HttpOnly;Secure"
+</ifModule>
