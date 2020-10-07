@@ -17,3 +17,61 @@ span.icono-personalizado{
     margin: 0 0 0 -7px !important;
 }
 
+.contenido-dia{
+    display: none;
+}
+
+.tabla-precios ul,
+ul.lista-precios{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul.lista-precios li .numero{
+    font-size: 30px;
+}
+
+.tabla-precios h3{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fe4918;
+}
+
+.dia{
+    width: 100%;
+    border-bottom: 3px solid #fe4918;
+}
+
+.contenido-dia{
+    flex-wrap: wrap;
+}
+
+.contenido-dia label{
+    font-weight: normal !important;
+}
+
+.contenido-dia time{
+    color: #fe4918;
+    font-weight: bold;
+}
+
+
+.tipo-evento{
+    width: 33.3%;
+}
+
+.eventos{
+    display: flex;
+    flex-direction: column;
+}
+
+.descripcion-evento{
+    padding-right: 23.3%;
+}
+
+.autor{
+    font-weight: bold;
+}
+

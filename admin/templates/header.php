@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +15,8 @@
   <link rel="stylesheet" href="css/tempusdominus-bootstrap-4.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
   <!-- IconPicker -->
   <link rel="stylesheet" href="css/fontawesome-iconpicker.css">
   <!-- Ionicons -->
@@ -22,12 +25,12 @@
   <link rel="stylesheet" href="css/adminlte.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
- <!-- bootstrap datepicker -->
+  <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="css/dataTables.bootstrap4.css">
-    <!-- DataTables Responsive -->
-    <link rel="stylesheet" href="css/responsive.dataTables.css">
+  <!-- DataTables Responsive -->
+  <link rel="stylesheet" href="css/responsive.dataTables.css">
   <!-- Sweet Alert 2 -->
   <link rel="stylesheet" href="css/sweetalert2.min.css">
   <!-- CSS Personalizado -->

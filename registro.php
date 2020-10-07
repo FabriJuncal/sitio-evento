@@ -162,7 +162,7 @@
                     <time><?=$evento['hora']?></time> <?=$evento['nombre_evento']?>
                     <br>
                     <span class="autor"><?=$evento['nombre_invitados'] ." ". $evento['apellido_invitado']?>  </span>
-                  </label> ><!-- Evento -->
+                  </label><!-- Evento -->
 
 <?php           endforeach ?>
 

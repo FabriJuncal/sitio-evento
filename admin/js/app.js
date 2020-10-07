@@ -99,6 +99,13 @@ $(function () { // Sintaxis de JQuery para que se ejecute la funcion cuando se t
 // ==============================================================================================================================================
       // Campo para cargar archivos - bs-custom-file-input - Plugin.js
       bsCustomFileInput.init();
+
+
+
+  //Flat red color scheme for iCheck
+  $('input[type="checkbox"].flat-red').iCheck({
+    checkboxClass: 'icheckbox_flat-blue'
+  })
       
 
   });

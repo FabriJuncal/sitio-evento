@@ -1,9 +1,9 @@
 <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.2
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
+  <div class="float-right d-none d-sm-block">
+    <b>Version</b> 3.0.2
+  </div>
+  <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+  reserved.
 </footer>
 </div>
 <!-- ./wrapper -->
@@ -29,6 +29,8 @@
 <script src="js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- bs-custom-file-input -->
 <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE App -->
 <script src="js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -39,7 +41,10 @@
 <script src="js/admin-ajax.js"></script>
 <!-- login-ajax -->
 <script src="js/login-ajax.js"></script>
+<!-- cotizador.Js -->
+<script src="../js/cotizador.js"></script>
 <!-- App.Js -->
 <script src="js/app.js"></script>
 </body>
+
 </html>
