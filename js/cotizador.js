@@ -29,6 +29,8 @@
         var lista_productos = document.getElementById('lista-productos');
         var suma_total = document.getElementById('suma-total');
 
+        var totalYaPagado = document.getElementById('total-pagado');
+
         // Extras
         var camisas = document.getElementById('camisa_evento');
         var etiquetas = document.getElementById('etiquetas');
@@ -61,12 +63,25 @@
 
             // Validamos el campo "Email", con la funcion "validaEmail", que se ejecutará con el evento "blur"
             email.addEventListener('blur', validaEmail);
+
+            const formulario_editar = document.getElementsByClassName('editar-registrado');
+            if(formulario_editar.length > 0){
+                if (pase_dia.value || pase_dosdias.value || pase_completo.value) {
+                    mostrarDias();
+                    calcularMontos();
+                }
+            }
+
         } 
         // ======================================================================================================================================
         /***  FUNCIONES  ***/
 
         function calcularMontos(event) {
-            event.preventDefault();
+            
+            if (event){
+                event.preventDefault();
+            }
+            
             if (regalo.value === '') {
                 alert("Debes elegir un regalo");
                 regalo.focus();
@@ -77,11 +92,18 @@
                     boletosCompleto = parseInt(pase_completo.value, 10) || 0,
                     cantCamisas = parseInt(camisas.value, 10) || 0,
                     cantEtiquetas = parseInt(etiquetas.value, 10) || 0;
-
+                
                 // Calculamos el Total a Pagar
                 var totalPagar = (boletosDia * 30) + (boletos2Dias * 45) + (boletosCompleto * 50) + ((cantCamisas * 10) * .93) + (cantEtiquetas * 2);
-
                 var listadoProductos = [];
+
+                if (document.getElementById('total-pagado')) {
+                    let totalYaPagadoValor = parseFloat(totalYaPagado.textContent);
+                    totalPagar = parseFloat(totalPagar - totalYaPagadoValor);
+                    document.getElementById('total_pedido').value = totalPagar + totalYaPagadoValor;
+                }else{
+                    document.getElementById('total-pagado').value = totalPagar;
+                }
 
                 // Se cargan los dias que se asignaron distinto de cero
                 if (boletosDia >= 1) {
@@ -115,8 +137,6 @@
                     botonRegistro.disabled = false;
 
                 }
-
-                document.getElementById('total_pedido').value = totalPagar;
             }
         }
 

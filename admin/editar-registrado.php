@@ -1,4 +1,12 @@
 <?php
+
+$id = $_GET['id'] ?? null;
+
+//Validamos si el valor del ID del GET es un String se muestra un error
+if (!filter_var($id, FILTER_VALIDATE_INT) || $id == null) {
+  die("¡ERRROR!");
+}
+
 // Para que funcione la redirección, no debe haber nada antes
 include_once 'funciones/sesiones.php';
 include_once 'funciones/funciones.php';
@@ -14,8 +22,8 @@ include_once 'templates/sidebar.php';
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Crear Registro</h1>
-          <span>Llena el formulario para crear un registro</span>
+          <h1>Editar Registro</h1>
+          <span>Llena el formulario para editar crear un registro</span>
         </div>
       </div>
     </div><!-- /.container-fluid -->
@@ -36,13 +44,21 @@ include_once 'templates/sidebar.php';
                 <h3 class="card-title">Crear Categoria</h3>
               </div>
               <!-- /.card-header -->
+
+              <?php
+              // Se obtiene todos los datos del registro del cliente
+              $sql = "SELECT * FROM registrados WHERE ID_Registrado = $id";
+              $resultado = $conn->query($sql);
+              $registrado = $resultado->fetch_assoc();
+              ?>
+
               <!-- form start -->
-              <form class="form-horizontal needs-validation" name="guardar-registro" id="guardar-registro" method="post" action="modelo-registrado.php">
+              <form class="form-horizontal needs-validation editar-registrado" name="guardar-registro" id="guardar-registro" method="post" action="modelo-registrado.php">
                 <div class="card-body">
                   <div class="form-group row">
                     <label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="nombre" name="nombre_registrado" placeholder="Nombre Registrado" required>
+                      <input type="text" class="form-control" id="nombre" name="nombre_registrado" placeholder="Nombre Registrado" value="<?= $registrado['nombre_registrado'] ?>" required>
                     </div>
                   </div>
                 </div>
@@ -50,7 +66,7 @@ include_once 'templates/sidebar.php';
                   <div class="form-group row">
                     <label for="apellido" class="col-sm-2 col-form-label">Apellido:</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="apellido" name="apellido_registrado" placeholder="Apellido Registrado" required>
+                      <input type="text" class="form-control" id="apellido" name="apellido_registrado" placeholder="Apellido Registrado" value="<?= $registrado['apellido_registrado'] ?>" required>
                     </div>
                   </div>
                 </div>
@@ -58,10 +74,18 @@ include_once 'templates/sidebar.php';
                   <div class="form-group row">
                     <label for="email" class="col-sm-2 col-form-label">Email:</label>
                     <div class="col-sm-10">
-                      <input type="email" class="form-control" id="email" name="email_registrado" placeholder="Email" required>
+                      <input type="email" class="form-control" id="email" name="email_registrado" placeholder="Email" value="<?= $registrado['email_registrado'] ?>" required>
                     </div>
                   </div>
                 </div>
+
+                <?php
+                // Se obtiene los boletos que adquirio el cliente en el registro
+                $pedido = $registrado['pases_articulos'];
+                $boletos = json_decode($pedido, true);
+                ?>
+
+
                 <div class="card-body">
                   <div class="form-group row">
                     <div id="paquetes" class="paquetes">
@@ -81,7 +105,7 @@ include_once 'templates/sidebar.php';
                             <div class="orden">
                               <label for="pase_dia">Boletos deseados:</label>
                               <!-- Agregamos el "boletos[]" con corchetes al final en el atributo "name" y asi estos 3 Inputs se almacenarán dentro de un array numerico -->
-                              <input type="number" min="0" id="pase_dia" class="registro-number" size="3" name="boletos[pase_dia][cantidad]" placeholder="0">
+                              <input type="number" min="0" id="pase_dia" class="registro-number" size="3" name="boletos[pase_dia][cantidad]" value="<?= $boletos['un_dia']['cantidad'] ?>" placeholder="0">
                               <input type="hidden" value="30" name="boletos[pase_dia][precio]">
                             </div>
                           </div>
@@ -99,7 +123,7 @@ include_once 'templates/sidebar.php';
                             <div class="orden">
                               <label for="pase_completo">Boletos deseados:</label>
                               <!-- Agregamos el "boletos[]" con corchetes al final en el atributo "name" y asi estos 3 Inputs se almacenarán dentro de un array numerico -->
-                              <input type="number" min="0" id="pase_completo" class="registro-number" size="3" name="boletos[pase_completo][cantidad]" placeholder="0">
+                              <input type="number" min="0" id="pase_completo" class="registro-number" size="3" name="boletos[pase_completo][cantidad]" value="<?= $boletos['pase_completo']['cantidad'] ?>" placeholder="0">
                               <input type="hidden" value="50" name="boletos[pase_completo][precio]">
                             </div>
                           </div>
@@ -117,7 +141,7 @@ include_once 'templates/sidebar.php';
                             <div class="orden">
                               <label for="pase_dosdias">Boletos deseados:</label>
                               <!-- Agregamos el "boletos[]" con corchetes al final en el atributo "name" y asi estos 3 Inputs se almacenarán dentro de un array numerico -->
-                              <input type="number" min="0" id="pase_dosdias" class="registro-number" size="3" name="boletos[pase_dosdias][cantidad]" placeholder="0">
+                              <input type="number" min="0" id="pase_dosdias" class="registro-number" size="3" name="boletos[pase_dosdias][cantidad]" value="<?= $boletos['pase_2dias']['cantidad'] ?>" placeholder="0">
                               <input type="hidden" value="45" name="boletos[pase_dosdias][precio]">
                             </div>
                           </div>
@@ -134,15 +158,19 @@ include_once 'templates/sidebar.php';
 
                       <div class="caja">
                         <?php
+                        // Se obtiene todos los talleres en el que se registro el cliente
+                        $eventos = $registrado['talleres_registrados'];
+                        $id_eventos_registrados = json_decode($eventos, true);
+
                         try {
 
                           $sql = "SELECT eventos.*, categoria_evento.cat_evento, invitados.nombre_invitado, invitados.apellido_invitado
-                                  FROM eventos
-                                  JOIN categoria_evento
-                                    ON  eventos.id_cat_evento = categoria_evento.id_categoria
-                                  JOIN  invitados
-                                    ON eventos.id_inv = invitados.invitado_id
-                                  ORDER BY eventos.fecha_evento, eventos.hora_evento, eventos.id_cat_evento";
+                                      FROM eventos
+                                      JOIN categoria_evento
+                                        ON  eventos.id_cat_evento = categoria_evento.id_categoria
+                                      JOIN  invitados
+                                        ON eventos.id_inv = invitados.invitado_id
+                                      ORDER BY eventos.fecha_evento, eventos.hora_evento, eventos.id_cat_evento";
 
                           $resultado = $conn->query($sql);
                         } catch (Exception $e) {
@@ -202,7 +230,7 @@ include_once 'templates/sidebar.php';
                                   <?php foreach ($eventos_dia as $evento) : ?>
 
                                     <label class="descripcion-evento">
-                                      <input type="checkbox" name="registro_evento[]" id="<?= $evento['id'] ?>" class="flat-red" value="<?= $evento['id'] ?>">
+                                      <input <?= (in_array($evento['id'], $id_eventos_registrados['eventos']) ? 'checked' : '') ?> type="checkbox" name="registro_evento[]" id="<?= $evento['id'] ?>" class="flat-red" value="<?= $evento['id'] ?>">
                                       <time><?= $evento['hora'] ?></time><br>
                                       <?= $evento['nombre_evento'] ?>
                                       <br>
@@ -229,14 +257,14 @@ include_once 'templates/sidebar.php';
 
                           <div class="orden">
                             <label for="camisa_evento">Camisa del evento $10 <small>(Promocion 7% dto.)</small></label>
-                            <input type="number" class="form-control" name="pedido_extra[camisas][cantidad]" min="0" id="camisa_evento" class="registro-number" size="3" placeholder="0">
+                            <input type="number" class="form-control" name="pedido_extra[camisas][cantidad]" min="0" id="camisa_evento" class="registro-number" size="3" value="<?= $boletos['camisas'] ?>" placeholder="0">
                             <input type="hidden" value="10" name=pedido_extra[camisas][precio]>
                           </div>
                           <!--.orden-->
 
                           <div class="orden">
                             <label for="etiquetas">Paquete de 10 etiquetas $2<small>(HTML5, CSS3, JavaScript, Chrome)</small></label>
-                            <input type="number" class="form-control" name="pedido_extra[etiquetas][cantidad]" min="0" id="etiquetas" class="registro-number" size="3" placeholder="0">
+                            <input type="number" class="form-control" name="pedido_extra[etiquetas][cantidad]" min="0" id="etiquetas" class="registro-number" size="3" value="<?= $boletos['etiquetas'] ?>" placeholder="0">
                             <input type="hidden" value="2" name=pedido_extra[etiquetas][precio]>
                           </div>
                           <!--.orden-->
@@ -245,9 +273,9 @@ include_once 'templates/sidebar.php';
                             <label for="regalo">Seleccione un regalo</label> <br>
                             <select id="regalo" class="form-control seleccionar" name="regalo" required>
                               <option value="">--Seleccione un regalo--</option>
-                              <option value="2">Etiquetas</option>
-                              <option value="1">Pulseras</option>
-                              <option value="3">Plumas</option>
+                              <option value="2" <?= ($registrado['regalo'] == 2) ? 'selected' : '' ?>>Etiquetas</option>
+                              <option value="1" <?= ($registrado['regalo'] == 1) ? 'selected' : '' ?>>Pulseras</option>
+                              <option value="3" <?= ($registrado['regalo'] == 3) ? 'selected' : '' ?>>Plumas</option>
                             </select>
                           </div>
                           <!--.orden-->
@@ -259,18 +287,11 @@ include_once 'templates/sidebar.php';
                         <!--extras-->
                         <div class="total col-md-6">
                           <label>Resumen:</label>
-                          <div id="lista-productos">
-
-                          </div>
+                          <div id="lista-productos"></div>
                           <br>
-                          <label>Total:</label>
-                          <div id="suma-total">
-
-                          </div>
-
-                          <!-- type="hidden": Agregamos un Campo Oculto para enviar el Total a Pagar -->
-                          <input type="hidden" name="total_pedido" id="total_pedido">
-
+                          <label>Total ya pagado: <span id="total-pagado"><?= $registrado['total_pagado'] ?></span></label>
+                          <br>
+                          <label>Total a pagar: <span id="suma-total"></span></label>
                         </div>
                       </div>
                       <!--.caja-->
@@ -283,8 +304,12 @@ include_once 'templates/sidebar.php';
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <input type="hidden" name="registro" value="crear">
-              <button type="submit" id="btnRegistro" class="btn btn-info">Añadir</button>
+              <!-- type="hidden": Agregamos los Campos Oculto para enviar -->
+              <input type="hidden" name="registro" value="editar">
+              <input type="hidden" name="total_pedido" id="total_pedido">
+              <input type="hidden" name="id_registro" value="<?= $registrado['ID_Registrado'] ?>">
+              <input type="hidden" name="fecha_registro" value="<?= $registrado['fecha_registro'] ?>">
+              <button type="submit" id="btnRegistro" class="btn btn-info">Guardar</button>
             </div>
             <!-- /.card-footer -->
             </form>

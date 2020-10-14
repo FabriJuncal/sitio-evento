@@ -54,7 +54,7 @@ ul.lista-precios li .numero{
 
 .contenido-dia time{
     color: #fe4918;
-    font-weight: bold;
+    font-weight: bold
 }
 
 
@@ -73,5 +73,13 @@ ul.lista-precios li .numero{
 
 .autor{
     font-weight: bold;
+}
+
+#total-pagado, #suma-total{
+    font-weight: normal;
+}
+
+#total-pagado::before{
+    content: '$ '
 }
 
