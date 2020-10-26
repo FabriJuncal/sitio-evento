@@ -33,6 +33,8 @@
   <link rel="stylesheet" href="css/responsive.dataTables.css">
   <!-- Sweet Alert 2 -->
   <link rel="stylesheet" href="css/sweetalert2.min.css">
+  <!-- ChartJS -->
+  <link rel="stylesheet" href="plugins/chart.js/Chart.css">
   <!-- CSS Personalizado -->
   <link rel="stylesheet" href="css/admin.css">
 </head>

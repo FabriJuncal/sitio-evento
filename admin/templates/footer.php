@@ -37,6 +37,8 @@
 <script src="js/demo.js"></script>
 <!-- Sweet Alert 2  -->
 <script src="js/sweetalert2.all.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.js"></script>
 <!-- Ajax's  -->
 <script src="js/admin-ajax.js"></script>
 <!-- login-ajax -->
