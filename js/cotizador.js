@@ -76,6 +76,7 @@
         // ======================================================================================================================================
         /***  FUNCIONES  ***/
 
+        // Calcula el monto segun de la seleccion del usuario y los muestra en el DOM
         function calcularMontos(event) {
             
             if (event){
@@ -140,6 +141,7 @@
             }
         }
 
+        // Valida según el boleto seleccionado y muestra los días con sus respectivos eventos
         function mostrarDias() {
             // Agregamos parseInt() para truncar los números en valores enteros.
             var boletosDia = parseInt(pase_dia.value, 10) || 0,
@@ -187,6 +189,7 @@
 
         }
 
+        // Valida los campos obligatorios y muestra una alerta en el DOM en el caso que no se haya completado algun campo
         function validaCampos() {
             // Se declara la variable y se le asigna el nodo donde se ejecuto el evento.
             // con ('error_' + this.id) logramos conseguir el nombre del ID al que se va a seleccionar el Nodo
@@ -202,6 +205,7 @@
             }
         }
 
+        // Valida el formato del email y muestra una alerta en el DOM en el caso que no tenga un formato correcto
         function validaEmail() {
             // Se declara la variable y se le asigna el nodo donde se ejecuto el evento.
             // con la funcion "indexOf" le pasamos como parametro un caracter y verificará si existe en el campo, en el caso

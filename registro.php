@@ -147,7 +147,7 @@
         foreach ($eventos_dia as $dia => $eventos) {
         ?>
           <div id="<?= str_replace('á', 'a', $dia) ?>" class="contenido-dia clearfix">
-            <h4><?= $dia ?></h4>
+            <h4 class="dia-evento"><?= $dia ?></h4>
 
 <?php       foreach($eventos['eventos'] as $tipo => $eventos_dia): ?>
 

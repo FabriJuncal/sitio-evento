@@ -1175,6 +1175,12 @@ div.paquetes .tabla-precios:hover{
 .contenido-dia{
     padding: 20px;
     display: none;
+    flex-wrap: wrap;
+}
+
+.dia-evento{
+    width: 100%;
+    
 }
 
 .autor{
