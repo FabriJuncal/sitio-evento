@@ -1,0 +1,21 @@
+Checklist para lanzar el proyecto:
+
+DISEÑO:
+	* Todo el contenido fue leído y el material utilizado.
+	* El dueño o persona a cargo ha aprobado el sitio.
+	* Todas las paginas fueron visitadas y hay forma de acceder a ellas.
+	* Todos los menús funcionan correctamente.
+	* Todos los enlaces ya fueron visitados.
+	* Todos los formularios fueron probados y la interacción es la correcta.
+
+CONTENIDO:
+	* El sitio web funciona en dispositivos móviles y computadoras de escritorio o laptops.
+	* Es Responsive en todos los distintos dispositivos.
+	* El tamaño de las fuentes es legible.
+	* Página 404 tomada en consideración.
+
+DESARROLLO:
+	* HTML, CSS y JavaScript válido.
+	* Compatible en distintos navegadores (al menos en las últimas versiones).
+	* CDN Activado si es posible.
+	* El sitio utiliza cache (en medida de lo posible)
