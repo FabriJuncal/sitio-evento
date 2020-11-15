@@ -99,9 +99,11 @@ include_once 'templates/sidebar.php';
                           // echo "<pre>";
                           // echo print_r($articulo);
                           // echo "<pre>";
-                          if (array_key_exists('cantidad', $articulo)) {
-                            echo "<span class='badge badge-info right'>" . $articulo['cantidad'] . "</span>"  . " " . $arreglo_articulos[$llave] . "<br>";
-                          } else {
+                          if(is_array($articulo )){
+                            if (array_key_exists('cantidad', $articulo)) {
+                              echo "<span class='badge badge-info right'>" . $articulo['cantidad'] . "</span>"  . " " . $arreglo_articulos[$llave] . "<br>";
+                            } 
+                          }else {
                             echo "<span class='badge badge-info right'>$articulo</span>"  . " " . $arreglo_articulos[$llave] . "<br>";
                           }
                         }
@@ -133,7 +135,7 @@ include_once 'templates/sidebar.php';
                       $resultado_talleres = $conn->query($sql_talleres);
 
                       while ($eventos = $resultado_talleres->fetch_assoc()) {
-                        echo  utf8_encode($eventos['nombre_evento']) . " " . "<small class='badge badge-primary'><i class='far fa-calendar-alt'></i>" . " " . $eventos['fecha_evento'] . " " . "<i class='far fa-clock'></i>" . $eventos['hora_evento'] . "</small><br>";
+                        echo  $eventos['nombre_evento'] . " " . "<small class='badge badge-primary'><i class='far fa-calendar-alt'></i>" . " " . $eventos['fecha_evento'] . " " . "<i class='far fa-clock'></i>" . $eventos['hora_evento'] . "</small><br>";
                       }
 
                       ?>

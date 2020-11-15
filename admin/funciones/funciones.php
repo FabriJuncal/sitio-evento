@@ -1,18 +1,16 @@
 <?php
 
-// echo "<pre>";
+$debugs = debug_backtrace(); // Genera un rastreo
+$archivo = pathinfo($debugs[0]['file']);
 
-// die(print_r($ruta['servicios']));
-
-if($ruta['basename'] == "servicios"){
+if( $archivo['filename'] == 'servicio-registrados'){
     require_once("../../includes/funciones/bd_conexion.php");
     require_once("../../includes/funciones/funciones.php");
-
 }else{
     require_once("../includes/funciones/bd_conexion.php");
     require_once("../includes/funciones/funciones.php");
-
 }
+
 
 // function verificar_usuario($usuario){
 //     require_once("../includes/funciones/bd_conexion.php");

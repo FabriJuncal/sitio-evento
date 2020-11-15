@@ -102,8 +102,6 @@
                     let totalYaPagadoValor = parseFloat(totalYaPagado.textContent);
                     totalPagar = parseFloat(totalPagar - totalYaPagadoValor);
                     document.getElementById('total_pedido').value = totalPagar + totalYaPagadoValor;
-                }else{
-                    document.getElementById('total-pagado').value = totalPagar;
                 }
 
                 // Se cargan los dias que se asignaron distinto de cero
@@ -193,18 +191,20 @@
         function validaCampos() {
             // Se declara la variable y se le asigna el nodo donde se ejecuto el evento.
             // con ('error_' + this.id) logramos conseguir el nombre del ID al que se va a seleccionar el Nodo
-            var errorDiv = document.querySelector('.seccion #error_' + this.id); // Ejemplo: .seccion #error_nombre
-            // Se declara la variable y se le asigna el 2do hijo del nodo con ":nth-child(2)". 
-            var texto = document.querySelector('.seccion #error_' + this.id + ' span:nth-child(2)');  // Ejemplo: .seccion #error_nombre span:nth-child(2)                 
-            if (this.value == '') {
-                //Insertamos el siguiente texto en el nodo antes de mostrarlo
-                texto.innerText = 'Campo obligatorio';
-                errorDiv.style.display = 'block';
-            } else {
-                errorDiv.style.display = 'none';
+            if(document.querySelector('.seccion #error_' + this.id)){
+                var errorDiv = document.querySelector('.seccion #error_' + this.id); // Ejemplo: .seccion #error_nombre
+                // Se declara la variable y se le asigna el 2do hijo del nodo con ":nth-child(2)". 
+                var texto = document.querySelector('.seccion #error_' + this.id + ' span:nth-child(2)');  // Ejemplo: .seccion #error_nombre span:nth-child(2)                 
+                if (this.value == '') {
+                    //Insertamos el siguiente texto en el nodo antes de mostrarlo
+                    texto.innerText = 'Campo obligatorio';
+                    errorDiv.style.display = 'block';
+                } else {
+                    errorDiv.style.display = 'none';
+                }
             }
-        }
 
+        }
         // Valida el formato del email y muestra una alerta en el DOM en el caso que no tenga un formato correcto
         function validaEmail() {
             // Se declara la variable y se le asigna el nodo donde se ejecuto el evento.
