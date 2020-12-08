@@ -1,5 +1,8 @@
 ![](images/MD/MD-logo.png)
 # Sitio web de ventas de boletos para la asistencia a eventos
+> Este proyecto se desarrollo en un curso en la plataforma Udemy <br>
+> https://www.udemy.com/course/desarrollo-web-completo-con-html5-css3-js-php-y-mysql/
+
 En este sitio web se podrá adquirir boletos para distintos tipos de eventos como Talleres, Conferencias y Seminarios realizando el [**pago con Paypal**](https://developer.paypal.com/docs/api/rest-sdks/).
 <br>
 En el sitio se podrá observar los invitados a los eventos, una galería de eventos ya realizados y los eventos proximos.<br> 
